@@ -12,9 +12,9 @@ public class HelloController {
 
         return "Hello from App";
     }
-    @RequestMapping("hello")
+    @RequestMapping("/request/hello")
     public String requestHello(){
-
-        return "Hello from Request Mapping";
+        return "Hello from Request mapping";
     }
-}
+    }
+
