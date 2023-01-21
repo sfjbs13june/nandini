@@ -11,7 +11,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
@@ -23,15 +23,29 @@ public class OperationControllerIntegrationTest {
 
     @Test
     public void testOperationControlleradd() throws Exception {
-        String a="20.0";
-        String b="4.0";
-        ResultActions responseEntity  = mockMvc.perform(get("/add").param("a",a).param("b",b));
-        responseEntity.andExpect(status().isOk());
-        String result = responseEntity.andReturn().getResponse().getContentAsString();
-        System.out.println(result);
-        Assertions.assertEquals("24.0", result);
+        long a = 20;
+        long b = 4;
+        ResultActions result = mockMvc.perform(get("/add").param("a", String.valueOf(a)).param("b", String.valueOf(b)));
+        result.andExpect(status().isOk());
+        String resultData=result.andReturn().getResponse().getContentAsString();
+        Assertions.assertEquals("24", resultData);
     }
-
-
-
+    @Test
+    public void testOperationControllersub() throws Exception {
+        long a = 20;
+        long b = 4;
+        ResultActions result = mockMvc.perform(post("/sub").param("a", String.valueOf(a)).param("b", String.valueOf(b)));
+        result.andExpect(status().isOk());
+        String resultData=result.andReturn().getResponse().getContentAsString();
+        Assertions.assertEquals("16", resultData);
+    }
+    @Test
+    public void testOperationControllermul() throws Exception {
+        long a = 20;
+        long b = 4;
+        ResultActions result = mockMvc.perform(put("/mul").param("a", String.valueOf(a)).param("b", String.valueOf(b)));
+        result.andExpect(status().isOk());
+        String resultData=result.andReturn().getResponse().getContentAsString();
+        Assertions.assertEquals("80", resultData);
+    }
 }
