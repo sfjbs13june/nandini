@@ -1,0 +1,30 @@
+###Docker Commands:
+
+##listing all active container :
+$ docker ps
+
+##listing all active and inactive container :
+$ docker ps -a
+
+docker rm <container-ID>
+
+docker stop <containerid>
+
+docker login
+
+docker images
+
+##docker run command:
+$ docker run <Repository>:<tag>
+eg: $ docker run -p 8080:8080 nandini06/student:0.0.1-SNAPSHOT
+
+docker exec -ti <container-id> /bin/sh
+
+docker push <Repo>:<tag>
+
+docker pull <Repo>:<tag>
+
+docker-compose down
+
+##Remove and stop container:
+$ docker rm $(docker ps -a -q)
