@@ -12,12 +12,14 @@ import java.util.List;
 public class PatientController {
     @Autowired
     AppointmentRepository appointmentRepository;
-    @RequestMapping(value="/appointment",method= RequestMethod.GET)
+    @GetMapping(value="/appointment")
     public List<Appointment> getAppointments(@RequestParam String patientName){
         return appointmentRepository.findByPatientName(patientName);
     }
-    @RequestMapping(value="/save",method=RequestMethod.POST)
+    @PostMapping(value="/save")
     public Appointment savepatient(@RequestBody Appointment appointment){
         return appointment;
     }
+
+
 }

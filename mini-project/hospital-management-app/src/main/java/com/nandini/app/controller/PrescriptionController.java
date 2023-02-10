@@ -12,7 +12,7 @@ import java.util.List;
 public class PrescriptionController {
     @Autowired
     PrescriptionRepository prescriptionRepository;
-    @RequestMapping(value = "/viewprescription",method = RequestMethod.GET)
+    @GetMapping(value = "/viewprescription")
     public List<Prescription> getPrescription(String patientName){
         return prescriptionRepository.findBypatientName(patientName);
 
